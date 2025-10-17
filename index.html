@@ -1,0 +1,1771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phonetics Master - Learn English Pronunciation</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #4a6cf7;
+            --secondary-color: #6c63ff;
+            --accent-color: #ff6584;
+            --dark-color: #1a1a2e;
+            --light-color: #f5f7fa;
+            --text-color: #333;
+            --card-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .logo i {
+            margin-right: 0.5rem;
+            font-size: 1.8rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 70px;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: #555;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 0.4s both;
+            box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(74, 108, 247, 0.4);
+        }
+
+        /* Animated Background Elements */
+        .sound-wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            opacity: 0.1;
+        }
+
+        .wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="%234a6cf7" fill-opacity="1" d="M0,96L48,112C96,128,192,160,288,160C384,160,480,128,576,122.7C672,117,768,139,864,154.7C960,171,1056,181,1152,165.3C1248,149,1344,107,1392,85.3L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path></svg>') no-repeat;
+            background-size: cover;
+            animation: wave 10s linear infinite;
+        }
+
+        .wave:nth-child(2) {
+            animation-delay: -5s;
+            opacity: 0.5;
+            bottom: 10px;
+        }
+
+        @keyframes wave {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Phonetics Introduction Section */
+        .phonetics-intro {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--dark-color);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        .phonetics-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .phonetics-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phonetics-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .phonetics-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark-color);
+        }
+
+        .card-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Video Gallery Section */
+        .video-gallery {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .gallery-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+
+        .filter-btn {
+            padding: 0.5rem 1.5rem;
+            background: white;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-thumbnail {
+            position: relative;
+            height: 160px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .play-button {
+            width: 60px;
+            height: 60px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .play-button i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            margin-left: 5px;
+        }
+
+        .video-card:hover .play-button {
+            transform: scale(1.1);
+            background: white;
+        }
+
+        .video-info {
+            padding: 1.5rem;
+        }
+
+        .video-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark-color);
+        }
+
+        .video-description {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .video-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #999;
+        }
+
+        .video-duration {
+            display: flex;
+            align-items: center;
+        }
+
+        .video-duration i {
+            margin-right: 0.3rem;
+        }
+
+        .video-level {
+            padding: 0.2rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .beginner {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .intermediate {
+            background: #fff8e1;
+            color: #f57f17;
+        }
+
+        .advanced {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        /* Interactive Phonetics Chart */
+        .phonetics-chart {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .chart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .chart-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .chart-tab {
+            padding: 0.8rem 1.5rem;
+            background: white;
+            border: none;
+            border-radius: 50px 50px 0 0;
+            cursor: pointer;
+            font-weight: 600;
+            color: #666;
+            transition: all 0.3s ease;
+            margin: 0 0.3rem;
+        }
+
+        .chart-tab.active {
+            background: white;
+            color: var(--primary-color);
+            box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .chart-content {
+            background: white;
+            border-radius: 0 15px 15px 15px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .vowel-chart,
+        .consonant-chart {
+            display: none;
+        }
+
+        .vowel-chart.active,
+        .consonant-chart.active {
+            display: block;
+        }
+
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .phoneme {
+            aspect-ratio: 1;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .phoneme:hover {
+            transform: scale(1.05);
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+        }
+
+        .phoneme-symbol {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .phoneme-example {
+            font-size: 0.9rem;
+        }
+
+        .phoneme-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--dark-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            white-space: nowrap;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .phoneme:hover .phoneme-tooltip {
+            opacity: 1;
+        }
+
+        /* Mouth Position Visualizer */
+        .mouth-visualizer {
+            padding: 4rem 2rem;
+            background: white;
+        }
+
+        .visualizer-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .mouth-display {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 50%;
+            position: relative;
+            margin: 2rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .mouth {
+            width: 150px;
+            height: 80px;
+            background: #ff6b6b;
+            border-radius: 0 0 75px 75px;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+
+        .mouth::before,
+        .mouth::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: white;
+            border-radius: 50%;
+            top: 20px;
+        }
+
+        .mouth::before {
+            left: 30px;
+        }
+
+        .mouth::after {
+            right: 30px;
+        }
+
+        .tongue {
+            position: absolute;
+            width: 100px;
+            height: 40px;
+            background: #ff9e9e;
+            border-radius: 50%;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            transition: all 0.5s ease;
+        }
+
+        .sound-selector {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .sound-btn {
+            padding: 0.5rem 1rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        .sound-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(74, 108, 247, 0.3);
+        }
+
+        /* Practice Section */
+        .practice-section {
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        .practice-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: var(--card-shadow);
+        }
+
+        .practice-prompt {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .practice-word {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 1rem 0;
+        }
+
+        .practice-phonetic {
+            font-size: 1.5rem;
+            color: #666;
+            font-style: italic;
+        }
+
+        .record-button {
+            display: block;
+            margin: 2rem auto;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent-color), #ff5252);
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(255, 101, 132, 0.3);
+        }
+
+        .record-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(255, 101, 132, 0.4);
+        }
+
+        .record-button.recording {
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(255, 101, 132, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 20px rgba(255, 101, 132, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(255, 101, 132, 0);
+            }
+        }
+
+        .feedback {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-top: 2rem;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .feedback.good {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .feedback.try-again {
+            background: #fff8e1;
+            color: #f57f17;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: white;
+            padding: 3rem 2rem 1rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Modal for Video Player */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--dark-color);
+        }
+
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #999;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--dark-color);
+        }
+
+        .modal-body {
+            padding: 1.5rem;
+        }
+
+        .video-player {
+            width: 100%;
+            height: 400px;
+            background: #000;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .video-description {
+            margin-top: 1.5rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .chart-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .modal-content {
+                width: 95%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <i class="fas fa-microphone-alt"></i>
+                Phonetics Master
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#videos">Videos</a></li>
+                <li><a href="#chart">Chart</a></li>
+                <li><a href="#practice">Practice</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="sound-wave">
+            <div class="wave"></div>
+            <div class="wave"></div>
+        </div>
+        <div class="hero-content">
+            <h1>Master English Phonetics</h1>
+            <p>Learn pronunciation with our comprehensive video lessons and interactive tools</p>
+            <a href="#videos" class="cta-button">Start Learning Now</a>
+        </div>
+    </section>
+
+    <!-- Phonetics Introduction -->
+    <section class="phonetics-intro">
+        <h2 class="section-title">Why Learn Phonetics?</h2>
+        <div class="phonetics-cards">
+            <div class="phonetics-card">
+                <div class="card-icon">
+                    <i class="fas fa-volume-up"></i>
+                </div>
+                <h3 class="card-title">Improve Pronunciation</h3>
+                <p class="card-description">Master the sounds of English and speak with confidence and clarity.</p>
+            </div>
+            <div class="phonetics-card">
+                <div class="card-icon">
+                    <i class="fas fa-headphones"></i>
+                </div>
+                <h3 class="card-title">Better Listening</h3>
+                <p class="card-description">Understand native speakers better by recognizing phonetic patterns.</p>
+            </div>
+            <div class="phonetics-card">
+                <div class="card-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <h3 class="card-title">Global Communication</h3>
+                <p class="card-description">Communicate effectively with people from around the world.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Video Gallery -->
+    <section class="video-gallery" id="videos">
+        <div class="gallery-container">
+            <h2 class="section-title">Video Lessons</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All Videos</button>
+                <button class="filter-btn" data-filter="vowels">Vowels</button>
+                <button class="filter-btn" data-filter="consonants">Consonants</button>
+                <button class="filter-btn" data-filter="practice">Practice</button>
+            </div>
+            <div class="video-grid">
+                <!-- Video Cards -->
+                <div class="video-card" data-category="vowels" data-video-id="1">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Introduction to Vowels</h3>
+                        <p class="video-description">Learn the basics of vowel sounds in English</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 8:45</span>
+                            <span class="video-level beginner">Beginner</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="vowels" data-video-id="2">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Short Vowels</h3>
+                        <p class="video-description">Master the short vowel sounds: a, e, i, o, u</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 10:20</span>
+                            <span class="video-level beginner">Beginner</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="vowels" data-video-id="3">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Long Vowels</h3>
+                        <p class="video-description">Understanding long vowel sounds and patterns</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 12:15</span>
+                            <span class="video-level intermediate">Intermediate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="vowels" data-video-id="4">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Diphthongs</h3>
+                        <p class="video-description">Complex vowel sounds that glide from one to another</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 15:30</span>
+                            <span class="video-level advanced">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="consonants" data-video-id="5">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Stop Consonants</h3>
+                        <p class="video-description">Plosive sounds: p, b, t, d, k, g</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 11:45</span>
+                            <span class="video-level beginner">Beginner</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="consonants" data-video-id="6">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Fricatives</h3>
+                        <p class="video-description">Continuous consonant sounds: f, v, s, z, etc.</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 13:20</span>
+                            <span class="video-level intermediate">Intermediate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="consonants" data-video-id="7">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Nasal Consonants</h3>
+                        <p class="video-description">Sounds produced through the nose: m, n, ng</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 9:15</span>
+                            <span class="video-level beginner">Beginner</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="consonants" data-video-id="8">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Liquid Consonants</h3>
+                        <p class="video-description">The challenging l and r sounds</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 14:00</span>
+                            <span class="video-level intermediate">Intermediate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="consonants" data-video-id="9">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Glides and Semivowels</h3>
+                        <p class="video-description">Understanding w and y sounds</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 10:30</span>
+                            <span class="video-level intermediate">Intermediate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="consonants" data-video-id="10">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">The Th Sounds</h3>
+                        <p class="video-description">Mastering voiced and voiceless th</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 12:45</span>
+                            <span class="video-level advanced">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="practice" data-video-id="11">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Minimal Pairs Practice</h3>
+                        <p class="video-description">Distinguishing similar sounds through practice</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 16:20</span>
+                            <span class="video-level intermediate">Intermediate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="practice" data-video-id="12">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Tongue Twisters</h3>
+                        <p class="video-description">Fun exercises to improve articulation</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 8:50</span>
+                            <span class="video-level beginner">Beginner</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="practice" data-video-id="13">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Connected Speech</h3>
+                        <p class="video-description">Understanding how sounds connect in natural speech</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 18:15</span>
+                            <span class="video-level advanced">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="practice" data-video-id="14">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Rhythm and Stress</h3>
+                        <p class="video-description">Mastering English word and sentence stress</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 14:40</span>
+                            <span class="video-level intermediate">Intermediate</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="practice" data-video-id="15">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Intonation Patterns</h3>
+                        <p class="video-description">Understanding the music of English</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 17:25</span>
+                            <span class="video-level advanced">Advanced</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-card" data-category="practice" data-video-id="16">
+                    <div class="video-thumbnail">
+                        <div class="play-button">
+                            <i class="fas fa-play"></i>
+                        </div>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">Common Pronunciation Mistakes</h3>
+                        <p class="video-description">Identifying and fixing frequent errors</p>
+                        <div class="video-meta">
+                            <span class="video-duration"><i class="far fa-clock"></i> 19:10</span>
+                            <span class="video-level intermediate">Intermediate</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Phonetics Chart -->
+    <section class="phonetics-chart" id="chart">
+        <div class="chart-container">
+            <h2 class="section-title">Interactive Phonetics Chart</h2>
+            <div class="chart-tabs">
+                <button class="chart-tab active" data-chart="vowels">Vowels</button>
+                <button class="chart-tab" data-chart="consonants">Consonants</button>
+            </div>
+            <div class="chart-content">
+                <div class="vowel-chart active">
+                    <h3>English Vowel Sounds</h3>
+                    <div class="chart-grid">
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">iː</span>
+                            <span class="phoneme-example">see</span>
+                            <span class="phoneme-tooltip">Long ee sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ɪ</span>
+                            <span class="phoneme-example">sit</span>
+                            <span class="phoneme-tooltip">Short i sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">e</span>
+                            <span class="phoneme-example">bed</span>
+                            <span class="phoneme-tooltip">Short e sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">æ</span>
+                            <span class="phoneme-example">cat</span>
+                            <span class="phoneme-tooltip">Short a sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ɑː</span>
+                            <span class="phoneme-example">car</span>
+                            <span class="phoneme-tooltip">Long ah sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ɒ</span>
+                            <span class="phoneme-example">hot</span>
+                            <span class="phoneme-tooltip">Short o sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ɔː</span>
+                            <span class="phoneme-example">saw</span>
+                            <span class="phoneme-tooltip">Long aw sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ʊ</span>
+                            <span class="phoneme-example">put</span>
+                            <span class="phoneme-tooltip">Short oo sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">uː</span>
+                            <span class="phoneme-example">blue</span>
+                            <span class="phoneme-tooltip">Long oo sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ʌ</span>
+                            <span class="phoneme-example">cup</span>
+                            <span class="phoneme-tooltip">Short uh sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">eɪ</span>
+                            <span class="phoneme-example">say</span>
+                            <span class="phoneme-tooltip">Long a sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">aɪ</span>
+                            <span class="phoneme-example">my</span>
+                            <span class="phoneme-tooltip">Long i sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ɔɪ</span>
+                            <span class="phoneme-example">boy</span>
+                            <span class="phoneme-tooltip">Oi sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">aʊ</span>
+                            <span class="phoneme-example">now</span>
+                            <span class="phoneme-tooltip">Ou sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">əʊ</span>
+                            <span class="phoneme-example">go</span>
+                            <span class="phoneme-tooltip">Long o sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ɪə</span>
+                            <span class="phoneme-example">here</span>
+                            <span class="phoneme-tooltip">Ear sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">eə</span>
+                            <span class="phoneme-example">hair</span>
+                            <span class="phoneme-tooltip">Air sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ʊə</span>
+                            <span class="phoneme-example">tour</span>
+                            <span class="phoneme-tooltip">oor sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ə</span>
+                            <span class="phoneme-example">about</span>
+                            <span class="phoneme-tooltip">Schwa sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ɜː</span>
+                            <span class="phoneme-example">bird</span>
+                            <span class="phoneme-tooltip">Er sound</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="consonant-chart">
+                    <h3>English Consonant Sounds</h3>
+                    <div class="chart-grid">
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">p</span>
+                            <span class="phoneme-example">pen</span>
+                            <span class="phoneme-tooltip">Voiceless p</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">b</span>
+                            <span class="phoneme-example">bed</span>
+                            <span class="phoneme-tooltip">Voiced b</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">t</span>
+                            <span class="phoneme-example">tea</span>
+                            <span class="phoneme-tooltip">Voiceless t</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">d</span>
+                            <span class="phoneme-example">dog</span>
+                            <span class="phoneme-tooltip">Voiced d</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">k</span>
+                            <span class="phoneme-example">cat</span>
+                            <span class="phoneme-tooltip">Voiceless k</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">g</span>
+                            <span class="phoneme-example">go</span>
+                            <span class="phoneme-tooltip">Voiced g</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">f</span>
+                            <span class="phoneme-example">fan</span>
+                            <span class="phoneme-tooltip">Voiceless f</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">v</span>
+                            <span class="phoneme-example">van</span>
+                            <span class="phoneme-tooltip">Voiced v</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">θ</span>
+                            <span class="phoneme-example">thin</span>
+                            <span class="phoneme-tooltip">Voiceless th</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ð</span>
+                            <span class="phoneme-example">this</span>
+                            <span class="phoneme-tooltip">Voiced th</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">s</span>
+                            <span class="phoneme-example">sun</span>
+                            <span class="phoneme-tooltip">Voiceless s</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">z</span>
+                            <span class="phoneme-example">zoo</span>
+                            <span class="phoneme-tooltip">Voiced z</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ʃ</span>
+                            <span class="phoneme-example">she</span>
+                            <span class="phoneme-tooltip">Sh sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ʒ</span>
+                            <span class="phoneme-example">measure</span>
+                            <span class="phoneme-tooltip">Zh sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">h</span>
+                            <span class="phoneme-example">hat</span>
+                            <span class="phoneme-tooltip">H sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">tʃ</span>
+                            <span class="phoneme-example">chair</span>
+                            <span class="phoneme-tooltip">Ch sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">dʒ</span>
+                            <span class="phoneme-example">judge</span>
+                            <span class="phoneme-tooltip">J sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">m</span>
+                            <span class="phoneme-example">man</span>
+                            <span class="phoneme-tooltip">M sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">n</span>
+                            <span class="phoneme-example">no</span>
+                            <span class="phoneme-tooltip">N sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">ŋ</span>
+                            <span class="phoneme-example">sing</span>
+                            <span class="phoneme-tooltip">Ng sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">l</span>
+                            <span class="phoneme-example">let</span>
+                            <span class="phoneme-tooltip">L sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">r</span>
+                            <span class="phoneme-example">red</span>
+                            <span class="phoneme-tooltip">R sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">w</span>
+                            <span class="phoneme-example">wet</span>
+                            <span class="phoneme-tooltip">W sound</span>
+                        </div>
+                        <div class="phoneme">
+                            <span class="phoneme-symbol">j</span>
+                            <span class="phoneme-example">yes</span>
+                            <span class="phoneme-tooltip">Y sound</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mouth Position Visualizer -->
+    <section class="mouth-visualizer">
+        <div class="visualizer-container">
+            <h2 class="section-title">Mouth Position Visualizer</h2>
+            <p>Click on different sounds to see how your mouth should be positioned</p>
+            <div class="mouth-display">
+                <div class="mouth" id="mouth">
+                    <div class="tongue" id="tongue"></div>
+                </div>
+            </div>
+            <div class="sound-selector">
+                <button class="sound-btn" data-sound="i">/iː/ (see)</button>
+                <button class="sound-btn" data-sound="a">/æ/ (cat)</button>
+                <button class="sound-btn" data-sound="u">/uː/ (blue)</button>
+                <button class="sound-btn" data-sound="o">/ɒ/ (hot)</button>
+                <button class="sound-btn" data-sound="th">/θ/ (thin)</button>
+                <button class="sound-btn" data-sound="r">/r/ (red)</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practice Section -->
+    <section class="practice-section" id="practice">
+        <div class="practice-container">
+            <h2 class="section-title">Practice Your Pronunciation</h2>
+            <div class="practice-prompt">
+                <p>Read the following word aloud and click record to check your pronunciation:</p>
+                <div class="practice-word">beautiful</div>
+                <div class="practice-phonetic">/ˈbjuːtɪfl/</div>
+            </div>
+            <button class="record-button" id="recordBtn">
+                <i class="fas fa-microphone"></i>
+            </button>
+            <div class="feedback" id="feedback">
+                <p id="feedbackText">Great job! Your pronunciation is clear and accurate.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="about">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Phonetics Master</h3>
+                <p>We provide comprehensive resources for learning English phonetics through interactive videos and tools.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#videos">Video Lessons</a></li>
+                    <li><a href="#chart">Phonetics Chart</a></li>
+                    <li><a href="#practice">Practice</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Resources</h3>
+                <ul>
+                    <li><a href="#">Phonetics Guide</a></li>
+                    <li><a href="#">Pronunciation Tips</a></li>
+                    <li><a href="#">Common Mistakes</a></li>
+                    <li><a href="#">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <ul>
+                    <li><i class="fas fa-envelope"></i> info@phoneticsmaster.com</li>
+                    <li><i class="fas fa-phone"></i> +1 (123) 456-7890</li>
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Learning Street, Education City</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 Phonetics Master. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Video Modal -->
+    <div class="modal" id="videoModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="modalTitle">Video Title</h3>
+                <button class="close-modal" id="closeModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="video-player" id="videoPlayer">
+                    <p>Video Player Placeholder</p>
+                </div>
+                <div class="video-description" id="videoDescription">
+                    This is where the video description would appear. In a real implementation, this would contain detailed information about the lesson, key learning points, and additional resources.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Video filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const videoCards = document.querySelectorAll('.video-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                
+                const filter = button.getAttribute('data-filter');
+                
+                videoCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'block';
+                        // Add animation
+                        card.style.animation = 'fadeInUp 0.5s ease';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Video modal
+        const videoModal = document.getElementById('videoModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const videoPlayer = document.getElementById('videoPlayer');
+        const videoDescription = document.getElementById('videoDescription');
+        const closeModal = document.getElementById('closeModal');
+
+        videoCards.forEach(card => {
+            card.addEventListener('click', () => {
+                const videoId = card.getAttribute('data-video-id');
+                const title = card.querySelector('.video-title').textContent;
+                const description = card.querySelector('.video-description').textContent;
+                
+                modalTitle.textContent = title;
+                videoPlayer.innerHTML = `<p>Video ${videoId}: ${title}</p><p>Video player would be embedded here</p>`;
+                videoDescription.textContent = `This is the full lesson for ${title}. ${description} In this comprehensive video, you'll learn proper mouth positioning, common mistakes to avoid, and practice exercises to perfect your pronunciation.`;
+                
+                videoModal.classList.add('active');
+            });
+        });
+
+        closeModal.addEventListener('click', () => {
+            videoModal.classList.remove('active');
+        });
+
+        videoModal.addEventListener('click', (e) => {
+            if (e.target === videoModal) {
+                videoModal.classList.remove('active');
+            }
+        });
+
+        // Phonetics chart tabs
+        const chartTabs = document.querySelectorAll('.chart-tab');
+        const vowelChart = document.querySelector('.vowel-chart');
+        const consonantChart = document.querySelector('.consonant-chart');
+
+        chartTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                // Remove active class from all tabs
+                chartTabs.forEach(t => t.classList.remove('active'));
+                // Add active class to clicked tab
+                tab.classList.add('active');
+                
+                const chartType = tab.getAttribute('data-chart');
+                
+                if (chartType === 'vowels') {
+                    vowelChart.classList.add('active');
+                    consonantChart.classList.remove('active');
+                } else {
+                    consonantChart.classList.add('active');
+                    vowelChart.classList.remove('active');
+                }
+            });
+        });
+
+        // Mouth position visualizer
+        const soundButtons = document.querySelectorAll('.sound-btn');
+        const mouth = document.getElementById('mouth');
+        const tongue = document.getElementById('tongue');
+
+        soundButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const sound = button.getAttribute('data-sound');
+                
+                // Reset mouth position
+                mouth.style.width = '150px';
+                mouth.style.height = '80px';
+                tongue.style.width = '100px';
+                tongue.style.height = '40px';
+                
+                // Apply specific mouth positions based on sound
+                switch(sound) {
+                    case 'i': // /iː/ - wide smile
+                        mouth.style.width = '180px';
+                        mouth.style.height = '60px';
+                        tongue.style.height = '20px';
+                        break;
+                    case 'a': // /æ/ - wide open
+                        mouth.style.width = '170px';
+                        mouth.style.height = '100px';
+                        tongue.style.height = '50px';
+                        tongue.style.bottom = '20px';
+                        break;
+                    case 'u': // /uː/ - rounded lips
+                        mouth.style.width = '120px';
+                        mouth.style.height = '90px';
+                        mouth.style.borderRadius = '50%';
+                        tongue.style.height = '30px';
+                        break;
+                    case 'o': // /ɒ/ - open rounded
+                        mouth.style.width = '140px';
+                        mouth.style.height = '85px';
+                        mouth.style.borderRadius = '50%';
+                        tongue.style.height = '40px';
+                        break;
+                    case 'th': // /θ/ - tongue between teeth
+                        tongue.style.width = '120px';
+                        tongue.style.height = '60px';
+                        tongue.style.bottom = '30px';
+                        break;
+                    case 'r': // /r/ - tongue pulled back
+                        tongue.style.width = '80px';
+                        tongue.style.height = '50px';
+                        tongue.style.bottom = '15px';
+                        tongue.style.borderRadius = '50% 50% 0 0';
+                        break;
+                }
+                
+                // Add animation effect
+                mouth.style.transition = 'all 0.5s ease';
+                tongue.style.transition = 'all 0.5s ease';
+            });
+        });
+
+        // Practice recording button
+        const recordBtn = document.getElementById('recordBtn');
+        const feedback = document.getElementById('feedback');
+        const feedbackText = document.getElementById('feedbackText');
+        let isRecording = false;
+
+        recordBtn.addEventListener('click', () => {
+            isRecording = !isRecording;
+            
+            if (isRecording) {
+                recordBtn.classList.add('recording');
+                recordBtn.innerHTML = '<i class="fas fa-stop"></i>';
+                
+                // Simulate recording for 3 seconds
+                setTimeout(() => {
+                    recordBtn.classList.remove('recording');
+                    recordBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+                    isRecording = false;
+                    
+                    // Show feedback (randomly good or try again)
+                    feedback.classList.remove('good', 'try-again');
+                    if (Math.random() > 0.3) {
+                        feedback.classList.add('good');
+                        feedbackText.textContent = 'Great job! Your pronunciation is clear and accurate.';
+                    } else {
+                        feedback.classList.add('try-again');
+                        feedbackText.textContent = 'Good try! Focus on the first syllable and try again.';
+                    }
+                    feedback.classList.add('show');
+                    
+                    // Hide feedback after 5 seconds
+                    setTimeout(() => {
+                        feedback.classList.remove('show');
+                    }, 5000);
+                }, 3000);
+            } else {
+                recordBtn.classList.remove('recording');
+                recordBtn.innerHTML = '<i class="fas fa-microphone"></i>';
+            }
+        });
+
+        // Add scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeInUp 0.8s ease forwards';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
